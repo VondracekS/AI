@@ -1,0 +1,8 @@
+# Midterm exam requirements
+
+pandas
+numpy
+matplotlib
+sklearn
+statsmodels
+seaborn

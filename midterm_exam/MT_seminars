@@ -1,0 +1,1222 @@
+#### BASIC FUNCTIONS FROM SEMINAR 1 ####
+
+# Libraries
+install.packages('glmnet')   # install package
+library('glmnet')            # load the package
+?mean                        # getting help for a function
+help(mean)                   # getting help for a function
+
+# Working directory
+getwd()                      # what is my current directory?
+setwd("C://file/path")       # change working directory
+ls()                         # return a list of all variables in the environment
+rm(x)                        # remove x from the environment    
+
+# Save and load data
+write.csv(x = DT, file = "DT.csv")  # save dataset DT as a csv file called "DT.csv"
+read.csv("DT.csv")                  # load a csv file called "DT.csv" into your environment
+saveRDS(DT, file="DT")              # save dataset DT as a RDS file called "DT.csv"
+DT=readRDS("DT")                    # load an RDS file called "DT" into your environment
+save(DT, file="DT.RData")           # save DT as RData file
+load("DT.RData")                    # load RData file into environment
+
+# Math functions and vector operations
+log(x)                       # natural log of x
+exp(x)                       # exponential of x
+sqrt(x)                      # square root of x 
+sum(x)                       # sum of values in x
+mean(x)                      # mean value of the values in x
+median(x)                    # median value of the values in x
+min(x)                       # smallest value in x
+max(x)                       # lagest value in x 
+range(x)                     # minimum & maximum tof he values in x
+sd(x)                        # standard deviation of the values in x
+var(x)                       # variance of the values in x
+summary(x)                   # summary statistics of the values in x
+length(x)                    # what is the number of elements in x?
+unique(x)                    # find unique values in x
+round(x, n)                  # round values of x to n decimal places
+sort(x, decreasing = T)      # return x sorted
+table(x)                     # look at counts of values
+which(x)
+cor(x)
+
+# Creating vectors
+vec = c(1,5,8)               # join elements into a vector
+vec = 1:10                   # sequence from 1 to 10
+vec = seq(5,6, by=0.5)       # sequence from 5 to 6 by 0.5
+vec = rep(c("A","B"), 10)    # repeat a vector
+
+# Access vector elements
+vec[3]                       # select the third element of the vector
+vec[-3]                      # select everything except for the third element of the vector 
+vec[1:5]                     # select elements 1 to 5
+vec[c(1,7)]                  # select only elements number 1 and 7
+vec["a"]                     # select element by name
+vec[vec == 5]                # select all elements equal to number 5      
+
+# Data types
+class(x)                     # what is the type of the object?
+as.numeric(x)                # convert x to integers, or simply numeric values (0,1,2,..)
+as.character(x)              # convert x to character strings ("hello", "1", "0", ...)
+as.factor(x)                 # convert x to factor
+as.logical(x)                # TRUE, FALSE etc.
+as.data.frame(x)             # convert x to a data frame (or simply data.frame() )
+as.matrix()
+as.list()
+
+# Data frames
+DT=data.frame("grades"=vec1,"points"=vec2,"logicvec"=vec3)
+View(DT)                     # look at the data frame
+head(DT, n=10)               # display first 10 rows
+tail(DT, n=10)               # display last 10 rows
+dim(DT)                      # returns (1) number of rows and (2) number of columns
+nrow(DT)                     # number of rows
+ncol(DT)                     # number of columns
+names(DT)                    # column names and row names
+colnames(DT)                 # column names
+rownames(DT)                 # row names
+DT$grades                    # select column by name
+DT[2,]                       # select the second row
+DT[2,]                       # select the second column
+DT[1,1]                      # value in first row and first column
+DT["row 1","grades"]         # select by name
+DT[c(3,5),1:2]               # select multiple rows and columns
+DT[DT$grades == "A",]        # use logical operators to select specific observations
+subset(DT,logical)           # subset observations in obect DT based on a logical criterion
+subset(DT,logical,select=variables) # same as above + select specific variables (usually columns)
+rbind(DT1,DT2)               # bind rows               
+cbind(DT1,DT2)               # bind columns
+
+# Setting/defining new values
+# 1. By names
+DT$empty=NA                  # set all values in DT$empty as "NA"
+DT$points2=DT$points*2       # multiply values in DT$points and assign them to a new column called points2
+DT$diff=DT$points2 - DT$points   # substract values from two columns, assign them to a new column
+# 2. By indices
+DT[,7]=rnorm(n=60, mean=0, sd=1) 
+DT[50,]=1                    # set all observations in row number 50 equal to 1  
+
+# Missing values
+is.na(DT)                    # are there NAs in DT? 
+sum(is.na(DT))               # how many values are missing?
+which(is.na(DT))             # which values are missing?
+DT[complete.cases(DT),]      # return data frame with no missing values (this function selects only rows with no NAs)
+
+
+# List
+mylist=list("grades"=vec1,"points"=vec2,"logicvec"=vec3)
+mylist[[1]]                  # select first element by index
+mylist$logicvec              # select element named "logicvec"
+mylist["points"]             # select element named "points"
+
+# Matrix
+M=matrix(x, nrow=5, ncol=6)
+M[2,3]                       # select element in second row and third column
+t(M)                         # transpose     
+M%*%N                        # matrix multiplication
+
+# Strings
+paste(x, y, sep="_")         # join string x and y, separate them with an "_"
+nchar(x)                     # number of characters in a string
+
+# Conditional Statements
+if (condition){              
+  Do something
+} else {
+  Do something different
+}
+# example:
+if (i > 0){                  
+  print("Yes")
+} else {
+  print("No")
+}
+
+# For loop
+for (variable in a sequence){    
+  Do something
+}
+# example:
+for (i in 1:10){
+  print(i)
+} 
+
+# While loop
+while (condition) {
+  Do something
+}
+# example:
+while (i < 10) {
+  print(i)
+  i=i+1
+}
+
+# Functions
+name_of_function <- function(variable){
+  Do something
+  return(the result)
+}
+# example:
+my_function <- function(x){
+  y=x^2/2
+  return(y)
+}
+
+
+
+
+
+##############################################################
+#### Seminar No. 2 #### 
+##############################################################
+
+# Installing and loading packages
+install.packages("datasets")
+library("datasets")
+
+# Load a built-in dataset from library datasets
+data(iris)
+data()
+DT=iris
+
+# Lets explore this dataset
+DT
+head(DT)
+tail(DT)
+dim(DT)
+names(DT)
+class(DT)
+
+# Any missing values?
+is.na(DT)
+sum(is.na(DT))
+which(is.na(DT))
+DT[complete.cases(DT),]
+
+# What are the sums of rows and columns?
+colSums(DT) # returns an error
+colSums(DT[,-c(5)])
+rowSums(DT[,-c(5)])
+
+# Summarize this dataset
+summary(DT) 
+
+# What are the 3 main species?
+unique(DT$Species)
+# How many flowers are in each species?
+
+# Summary in a graph = a boxplot!
+boxplot(DT[,-c(5)])
+
+# Plot
+plot(DT)  # or pairs(DT)
+cor(DT)   # returns error, why?
+cor(DT[,-c(5)])
+
+# Scatterplot of one pair
+plot(DT$Sepal.Length, DT$Petal.Length)
+
+# Can we test the correlation of this pair?
+cor.test(DT$Sepal.Length, DT$Petal.Length)
+
+# How about a linear model?
+model=lm(Petal.Length~Sepal.Length, data=DT)
+summary(model)
+
+plot(DT$Sepal.Length, DT$Petal.Length)
+abline(m)
+
+
+
+# Lets look at Petal.Length. Notice anything suspicious?
+plot(DT$Petal.Length)
+barplot(DT$Petal.Length)
+hist(DT$Petal.Length)
+table(DT$Petal.Length)
+table(DT$Species,DT$Petal.Length)
+plot(DT$Petal.Length, col=DT$Species)
+
+# 
+boxplot(Petal.Length~Species,data=DT)
+
+boxplot(Petal.Length~Species,
+        data=DT,
+        main = "Petal Length in 3 species of iris",
+        xlab = "Species of flowers",
+        ylab = "Petal Length",
+        col=c("red","green","blue"))
+
+# Lets subset Petal.Length into 3 different vectors
+setosa = DT[DT$Species == "setosa",3]
+versicolor = DT[DT$Species == "versicolor",3]
+virginica = DT[DT$Species == "virginica",3]
+
+# Compare their histograms
+par(mfrow=c(1,3))
+hist(setosa)
+hist(versicolor)
+hist(virginica)
+par(mfrow=c(1,1))
+
+# Are these differences significant?
+t.test(setosa,versicolor)
+
+
+##############################################################
+####################  SOME Nicer graphs ######################  
+##############################################################
+
+# Lattice graphics
+install.packages("lattice")
+library("lattice")
+histogram(setosa)
+xyplot(DT$Sepal.Length~DT$Petal.Length)
+xyplot(DT$Petal.Length~DT$Species)
+xyplot(DT$Sepal.Length~DT$Petal.Length|DT$Species)
+
+# ggplot2
+install.packages("ggplot2")
+library(ggplot2)
+
+# Scatter plots
+qplot(Petal.Length, Petal.Width, data = iris)
+
+# ggplot
+g1 = ggplot(data=DT, aes(x=Sepal.Length, y=Petal.Length)) +
+  geom_line()
+g1
+
+g1 = ggplot(data=DT, aes(x=Sepal.Length, y=Petal.Length, color=Species)) +
+  geom_point(shape=17, size=1.2)
+g1
+
+g2 = g1 + geom_smooth(method="lm")
+g2 + theme_minimal()
+
+g3 = g2 + theme(axis.line = element_line(colour = "blue", size = .1, linetype = "dashed"),
+                axis.text = element_text(size=12), axis.title=element_text(size=12,face="bold")) 
+g4 = g3 +
+  ggtitle("Our first ggplot graph with a title") +
+  labs(y = "Petal Length (cm)") + labs(x = "Sepal Length (cm)")+
+  theme(legend.title = element_blank())
+
+g4  
+
+g5 = ggplot(data=DT, aes(x=Sepal.Length, y=Petal.Length, color=Species)) +
+  geom_point(shape=17, size=1.2) + 
+  geom_smooth(method="lm") +
+  theme(axis.line = element_line(colour = "blue", size = .1, linetype = "dashed"),
+        axis.text = element_text(size=12), axis.title=element_text(size=12,face="bold"))+
+  ggtitle("Our first ggplot graph with a title") +
+  labs(y = "Petal Length (cm)") + labs(x = "Sepal Length (cm)")+
+  theme(legend.title = element_blank())
+g5
+
+
+
+
+
+
+
+
+
+###################################################################################
+#### Seminar No. 3 #### 
+# 1) Work with raw data and convert to a workable dataset (training, testing)
+# 2) Prepare summary statistics (to-do write a function that will return a table with: mean, sd, quantiles, skewness, kurtosis, normality test, correlation table)
+# 3) Visualize data: Overlapping histograms, Ordered box-plots, x-y plots.
+# 4) Estimate lm() models
+# 5) compare model accuracy
+# 6) consider other loss functions - create your own!
+###################################################################################
+
+# The raw dataset
+oc = read.csv(file='C:\\....\\octavia.csv')
+oc = read.csv(file='C:\\Users\\239522\\Desktop\\AI FIN\\octavia2.csv',sep=',',dec='.')
+oc = as.data.frame(octavia2)
+
+# Let's take a look at first 10 observations
+head(oc,n=10)
+# Let's take a look at last 10 observations
+tail(oc,n=10)
+
+###################################################################################
+# 1) Work with raw data and convert to a workable dataset (training, testing)
+###################################################################################
+
+# I do not like the first column - uninformative
+##################################
+## TASK 1 - Load data without the first column!
+oc = oc[,-1]
+##################################
+# Now check
+head(oc,n=10)
+
+# Lets translate the names of variables
+names(oc)[c(4:5,7)] = c('power','region','transmission')
+names(oc)
+
+#################
+# Check variables
+#################
+
+# YEAR
+# Some older cars are not very well represented.
+table(oc$year)
+# First, all cars older than 2004 incl. are going to be set to 2004
+# Second, we will change year to age - more intuitive (better scale)
+oc$year[oc$year <= 2004] = 2004
+table(oc$year)
+
+##################################
+# TASK 2 - Create age variable
+oc$age = 2022-oc$year
+summary(oc$age)
+
+##################################  
+# KM
+summary(oc$km)
+# I am suspicious -> outliers?
+# I also do not like the unnecessary large number - convert into 1000s of km
+oc$km = oc$km/1000
+# An ugly histogram
+hist(oc$km,prob=T)
+# Slightly better looking one
+dev.off()
+hist(oc$km,breaks=15,prob=T,yaxt='n',xaxt='n',ylim=c(-0.0004,0.008),xlim=c(0,500),density=30,col=rgb(0.5,0.5,0.5,alpha=0.8),xlab=c(),ylab=c(),main='')
+axis(1,at=seq(from=0,to=max(oc$km),by=100),label=seq(from=0,to=max(oc$km),by=100),cex.axis=0.85)
+axis(2,at=seq(from=0,to=0.01,by=0.001),label=seq(from=0,to=0.01,by=0.001),cex.axis=0.85,las=2)
+legend('bottomright',bty='n',legend='Kilometers')
+legend('topleft',bty='n',legend='Density')
+
+# We should categorize relatively new cars: km < 10000.
+oc$km10 = (oc$km<10)*1
+head(cbind(oc$km,oc$km10),n=100)
+sum(oc$km10)
+
+##################################
+# TASK 3 - Use log transform on km
+oc$lkm = log(oc$km)
+hist(oc$lkm,prob=T)
+
+##################################
+
+# POWER
+summary(oc$power)
+table(oc$power)
+# It seems like there might be errors but also different power levels. Let's create dummies
+oc$power_lowest  = (oc$power<77)*1
+oc$power_low     = (oc$power>=77 & oc$power<85)*1
+oc$power_mid     = (oc$power>=85 & oc$power<103)*1
+oc$power_high    = (oc$power>=103 & oc$power<118)*1
+oc$power_highest = (oc$power>118)*1
+# Domain knowledge will guide us later, as power and fuel should be addressed together
+
+# REGION
+table(oc$region)
+typeof(oc$region)
+oc$region = as.character(oc$region)
+# Simplify into dummies
+oc$ba = (oc$region == 'BA kraj')*1
+oc$bb = (oc$region == 'BB kraj')*1
+oc$ke = (oc$region == 'KE kraj')*1
+oc$nr = (oc$region == 'NR kraj')*1
+oc$po = (oc$region == 'PO kraj')*1
+oc$tn = (oc$region == 'TN kraj')*1
+oc$tt = (oc$region == 'TT kraj')*1
+oc$za = (oc$region == 'ZA kraj')*1
+
+# FUEL
+table(oc$fuel)
+# Translate and convert: 
+oc$fuel = as.character(oc$fuel)
+oc$diesel = (oc$fuel == 'Diesel')*1
+oc$petrol = (oc$fuel == 'Benzín')*1 # you might have issues with the special character here
+oc$petgas = (oc$fuel == 'Benzín+Plyn')*1
+
+# TRANSMISSION
+table(oc$transmission)
+# Simplify and dummify
+oc$man = (oc$transmission != 'Automat')*1
+
+# POWER AND FUEL - some important combination?
+oc$eng1 = c(oc$power == 77 & oc$diesel == 1)*1
+oc$eng2 = c(oc$power == 81 & oc$diesel == 1)*1
+oc$eng3 = c(oc$power == 85 & oc$diesel == 1)*1
+oc$eng4 = c(oc$power == 103 & oc$diesel == 1)*1
+oc$eng6 = c(oc$power == 110 & oc$diesel == 1)*1
+
+# PRICE
+summary(oc$price)
+hist(oc$price,prob=F,breaks=15)
+dev.off()
+hist(oc$price,breaks=15,prob=F,yaxt='n',xaxt='n',ylim=c(0,180),xlim=c(0,40000),density=30,col=rgb(0.5,0.5,0.5,alpha=0.8),xlab=c(),ylab=c(),main='')
+axis(1,at=seq(from=0,to=40000,by=5000),label=seq(from=0,to=40000,by=5000),cex.axis=0.85)
+axis(2,at=seq(from=0,to=180,by=30),label=seq(from=0,to=180,by=30),cex.axis=0.85)
+legend('bottomright',bty='n',legend='Price')
+legend('topleft',bty='n',legend='Density')
+
+# REMOVE WHAT WE DO NOT NEED
+names(oc)
+oc[,c('year','lkm','power','region','fuel','transmission')] = NULL
+names(oc)
+
+# Divide the sample into training and testing
+set.seed(50)
+# Overall number of observations
+N = dim(oc)[1]
+idx = sample(1:N,size=floor(0.8*N),replace=F)
+# Training
+ocr = oc[ idx,]
+# Number of observations in the Training
+NR = dim(ocr)[1]
+# Testing
+oct = oc[-idx,]
+# Number of observations in the Testing
+NT = dim(oct)[1]
+
+###################################################################################
+#  2) Prepare summary statistics - work in training dataset
+###################################################################################
+
+##################################
+## TASK 4 - Calculate and print correlation & stat. significance between price and all remaining variables:
+NV = dim(ocr)[2]
+y = ocr$price
+for (i in 2:NV) {
+  m = cor.test(y,ocr[,i],menthod='kendall')
+  print(paste('Corr. between price and ', 
+              names(ocr)[i], 'is', round(m$estimate,3), 'and the signif. is', round(m$p.value,3)))
+}
+
+
+##################################
+
+
+##################################
+## Home assignment: Write a function() that will return 2 tables:
+# 1) Descriptive statistics for given variables
+# 2) Correlation table with statistical significance
+# Are there features that are excessively correlated? (say above 0.95?)
+
+
+###################################################################################
+# 3) Visualize data: Overlapping histograms, Ordered box-plots, x-y plots.
+###################################################################################
+dev.off()
+par(mfrow=c(1, 1)) # layout of figures - (rows,columns)
+par(cex = 1.1)
+par(oma = c(2, 2.0, 1.0, 1.0))
+par(tcl = -0.25)
+par(mgp = c(2, 0.6, 0))
+par(mar = c(2.0, 3.0, 1.5, 0.5))
+hist(oc$price[oc$man==1],breaks=15,prob=T,xaxt='n',
+     xlim=c(0,40000),density=10,
+     col=rgb(0.85,0.5,0.05,alpha=0.9),
+     xlab=c(),ylab=c(),main='',cex.axis=0.55,
+     ylim=c(0,9.5^(-4)))
+hist(ocr$price[oc$man==0],breaks=15,prob=T,add=T,
+     col=rgb(0.15,0.85,0.85,alpha=0.9),density=10)
+axis(1,at=seq(from=0,to=40000,by=5000),label=seq(from=0,to=40000,by=5000),cex.axis=0.65)
+lines(density(ocr$price[ocr$man==1]),col=rgb(0.85,0.5,0.05),lwd=1.25,lty=2)
+lines(density(ocr$price[ocr$man==0]),col=rgb(0.15,0.85,0.85),lwd=1.25,lty=2)
+legend('topright',bty='n',legend=c('Distribution of price\nmanual shift\n',
+                                   'Distribution of price\nautomatic shift'),
+       col=c(rgb(0.85,0.5,0.05),rgb(0.15,0.85,0.85)),cex=0.75,lty=1)
+
+
+boxplot(price~man,data=ocr,pch=19,cex=0.35,yaxt='n',xlab='',
+        ylab = 'Price of the car',xaxt='n',cex.lab=0.75)
+axis(2,at=seq(from=0,to=40000,by=5000),label=seq(from=0,to=40000,by=5000),cex.axis=0.65,las=2)
+axis(1,at=c(1,2),label=c('Automatic shift', 'Manual shift'),
+     cex.axis=0.65)
+
+dev.off()
+par(mfrow=c(1, 1)) # layout of figures - (rows,columns)
+par(cex = 1.1)
+par(oma = c(2, 2.0, 1.0, 1.0))
+par(tcl = -0.25)
+par(mgp = c(2, 0.6, 0))
+par(mar = c(3.0, 3.0, 1.5, 0.5))
+plot(x=ocr$km[ocr$age > 9],y=ocr$price[ocr$age > 9],      pch=19, cex=0.5, col='black',ylab='Price',xlab='Kilometers',     ylim=c(0,max(ocr$price)),xlim=c(0,max(ocr$km)),
+     cex.axis=0.85,cex.lab=0.95)
+abline(lm(price~km,data=ocr[ocr$age > 9,]),lwd=1.5)
+points(x=ocr$km[ocr$age <= 9],y=ocr$price[ocr$age <= 9],
+       col='red',pch=19,cex=0.5)
+abline(lm(price~km,data=ocr[ocr$age <= 9,]),lwd=1.5,
+       col='red')
+legend('topright',bty='n',legend=c('Dependence for older cars\n(9 +)\n',
+                                   'Dependence for younger cars\n(9 -)'),
+       col=c('black','red'),cex=0.75,lty=1)
+
+###################################################################################
+# 4) Estimate OLS models
+###################################################################################
+m1 = lm(price ~ km, data=ocr)
+summary(m1)
+
+m2 = lm(price ~ age, data=ocr)
+summary(m2)
+
+m3 = lm(price ~ km + age, data=ocr)
+summary(m3)
+
+m4 = lm(price ~ km + age + I(km*age), data=ocr)
+summary(m4)
+
+##################################
+# TASK 5 - Estimate your own specification - try to beat the others! You can also create new variables
+m5 = lm(price ~ km + I(km^ 2) + age + I(age^ 2) +
+          diesel + man + eng1 + eng2 + eng3 + eng4 +
+          eng6, data = ocr)
+summary(m5)  
+
+
+##################################
+
+#########
+# Predict
+# Store
+predictions = matrix(NA,nrow=NT,ncol=5+1)
+colnames(predictions) = c('True',paste('p',1:5,sep=''))
+predictions[,1] = oct$price
+# Predictions itself
+p1 = predict(m1,new=oct); summary(p1)
+predictions[,2] = p1
+p2 = predict(m2,new=oct); summary(p2) # Negative price does not make sense here... so some adjustment is in order
+# We substitute the lowest positive predicted value
+p2[p2 < 0] = min(p2[p2>0]); summary(p2)
+predictions[,3] = p2
+p3 = predict(m3,new=oct); summary(p3) 
+# Again
+p3[p3 < 0] = min(p3[p3>0]); summary(p3)
+predictions[,4] = p3
+p4 = predict(m4,new=oct); summary(p4)
+predictions[,5] = p4
+p5 = predict(m5,new=oct); summary(p5) # Again
+p5[p5 < 0] = min(p5[p5>0]); summary(p5)
+predictions[,6] = p5
+#########
+
+#########
+# Evaluate
+# Store
+mse = matrix(NA,nrow=NT,ncol=5) # 5 models
+for (i in 1:5) mse[,i] = (predictions[,1] - predictions[,i+1])^2
+apply(mse,2,mean)
+
+#########
+# MCS
+library(MCS)
+MCSprocedure(mse)
+#########
+
+
+
+
+###################################################################################
+#### Seminar No. 4 ####
+# 1) Load oct.csv (xlsx) and ocr.csv (xlsx)
+# 2) Estimate models
+# 2.1) OLS
+# 2.2) Backward elim
+# 2.3) Forward elim
+# 2.4) Forecast evaluation
+# 3) Visualize predicted and forecasted values
+# 4) Estimate LASSO, RIDGE, EN
+# 5) Evaluate models - LASSO, RIDGE, EN
+###################################################################################
+
+#######################
+# 2.1) OLS models
+#######################
+# OLS models
+m1 = lm(price ~ km, data=ocr); p1 = predict(m1,new=oct);
+m2 = lm(price ~ age, data=ocr); p2 = predict(m2,new=oct)
+m3 = lm(price ~ km + age, data=ocr); p3 = predict(m3,new=oct)
+# Here use your 'top' model from Seminar 3
+m4 = lm(price ~ km + age + km10 + power_lowest + power_low + power_mid + 
+          power_high + power_highest + ba + bb + ke + nr + po + tn + tt + 
+          petrol + petgas + man + eng1 + eng2 + eng3 + eng4 + eng6, data=ocr); 
+p4 = predict(m4,new=oct)
+# My 'top' model spec
+m5 = lm(price ~ km + I(km^2) + age + I(age^2) +
+          diesel + man + eng1 + eng2 + eng3 + eng4 +
+          eng6, data = ocr)
+p5 = predict(m5,new=oct)
+#######################
+
+#######################
+# Backward elimination
+#######################
+# I need to create couple of FUNCTIONS (or you can use a function is a package)
+
+# Generate a specification
+# Inputs
+# dep - name of the dependent variable
+# x   - vector of characters -> names of features to be considered initially (all features)
+# Output
+# as.formula() object that goes into lm()
+# We need the function in order to generate specifications
+gen.fm = function(dep='price',x=features) {
+  # This will create the 'dep~1' string - which is y = beta_0 model
+  # paste() is a useful function... it links strings
+  spec = paste(dep,'~1',sep='')
+  # If there are no features - the vector 'x' has no elements - return
+  if (is.null(x)) return(as.formula(spec))
+  # Number of features
+  NV = length(x)
+  # Loop over all features - we add one feature at a time
+  for (v in 1:NV) spec = paste(spec,'+',x[v],sep='')
+  return(as.formula(spec))
+}
+
+# Pairs-Bootstrap p-values
+# Inputs
+# m - the lm() object
+# spec - specification
+# B - Size of the bootstrap sample
+# We need this function in order to calculate significance of coefficients
+spec = as.formula(price ~ km + age + km10 + power_lowest + power_low + power_mid + 
+                    power_high + power_highest + ba + bb + ke + nr + po + tn + tt + 
+                    petrol + petgas + man + eng1 + eng2 + eng3 + eng4 + eng6)
+pair.bt = function(model=m4, spec, B=1000) {
+  
+  # We extract the data from the 'model' object
+  dt = model$model
+  # How many observations we have?
+  N = dim(dt)[1]
+  # How many features we have? Minus 1 is because of the dependent variable
+  NV = dim(dt)[2]-1
+  # We create a matrix where rows correspond to different bootstrap sample
+  # Columns are coefficient estimates
+  CFB = matrix(NA,nrow=B,ncol=NV+1) # +1 Intercept
+  colnames(CFB) = c('Intercept',names(dt)[-1])
+  
+  for (b in 1:B) {
+    
+    # Randomly select from 1 to N, N numbers with replacement.
+    idx.b = sample(1:N,size=N,replace=TRUE)
+    # Now create the b^{th} boostrap sample
+    dtb = dt[idx.b,]
+    # Estimate model with given specification using the b^{th} bootstrap sample
+    mb = lm(spec,data=dtb)
+    # Extract coefficients from the model
+    cfb = coefficients(mb)
+    # Store the Intercept
+    CFB[b,1] = cfb[1]
+    # Store the remaining variables - beware they should be stored in the correct column
+    # which() - Which names from cfb are in (%in%) columns of CFB
+    CFB[b,which(names(cfb) %in% colnames(CFB))] = cfb[-1]
+    
+  }
+  
+  # Now we calculate the p-values for each variable that we return
+  return(apply(CFB,2,function(x) min(c(sum(x>0,na.rm=T),sum(x<0,na.rm=T)))/length(x)))
+}
+
+
+# Backward Elimination
+features = c('km','age','km10','power_lowest','power_low','power_mid','power_high',
+             'power_highest','ba','bb','ke','nr','po','tn','tt','petrol',
+             'petgas','man','eng1','eng2','eng3','eng4','eng6')
+# Threshold - critical value
+pt = 0.10
+
+# We start by the initial full model
+spec = gen.fm(dep='price',x=features)
+m = lm(spec,data=ocr)
+NV = length(features)
+A = Sys.time()
+pvals = pair.bt(model=m,spec,B=B)
+Sys.time()-A
+# It takes around 7.3s on my laptop
+
+# while(logical condition) is a loop
+# It loops until the condition is met
+# The condition says that there should be no p-value larger then the threshold pt
+while(length(which(pvals[-1] > pt))>0) {
+  # We need to find the variable that has the highest p-value which is also above the threshold
+  rm.var = names(which(pvals == max(pvals[which(pvals[-1] > pt)+1])))
+  # Now we want to remove it from the list of features
+  features = features[-which(features==rm.var)]
+  # Now we want to re-estimate the regression model without that variable
+  # So we create the new specifiction with the updated features
+  spec = gen.fm(dep='price',x=features)
+  # And estimate the model
+  m = lm(spec,data=ocr)
+  # And the significances
+  pvals = pair.bt(model=m,spec,B=B)
+  # We now check the condition - are there any coefficient that have a pvalue above the threshold pt?
+}
+# This while() can take a while
+
+# The last model is our Backward Elimination model
+m6 = m
+# Let's take a look: coefficients + pvals
+cbind(coefficients(m6),pvals)
+p6 = predict(m6,new=oct)
+
+###############################################
+# HOME ASSIGNMENT
+# Make a function that returns:
+# - Backward elimination selected specification
+# - Predictions from backward elimination
+###############################################
+
+#######################
+# Forward elimination
+#######################
+
+# We start with the same initial set of features
+features = c('km','age','km10','power_lowest','power_low','power_mid','power_high',
+             'power_highest','ba','bb','ke','nr','po','tn','tt','petrol',
+             'petgas','man','eng1','eng2','eng3','eng4','eng6')
+# Number of features
+NV = length(features)
+# Threshold - critical value - same as before
+pt = 0.10
+# We will use a smaller bootstrap sample size (saves time)
+B = 250
+# We start by the baseline model with only a constant
+spec = gen.fm(dep='price',x=NULL)
+# Estimate model
+m = lm(spec,data=oct)
+# Here we will store variables that 'pass' the test
+good.features = c()
+# In forward elimination we need to start to add the 'best' variable at a time.
+# We loop over all variables - initially (v=1) we have NV variables to consider. Finally, only one is left.
+for (v in 1:NV) {
+  print(v)
+  # Remaining number of features
+  NF = length(features)
+  # Store pvalues
+  mat.pvals = matrix(NA,nrow=NF,ncol=1)
+  # We need to try to add one-at-a-time all remaining features
+  for (f in 1:NF) {
+    # Generate specification
+    spec = gen.fm(dep='price',x=c(good.features,features[f]))
+    # Estimate model
+    m = lm(spec,data=ocr)
+    # Find p-values
+    pvals = pair.bt(model=m,spec,B=B)
+    # Store p-values
+    mat.pvals[f,1] = pvals[length(pvals)]
+  }
+  # Check if there is at least one pvalue lower as threshold - if not - we are done - Algo stops
+  if (length(which(mat.pvals < pt))==0) break
+  # Which variable has lowest p-value?
+  add.var = features[(which(mat.pvals==min(mat.pvals)))][1]
+  # We will add this variable to the set of good features
+  good.features = c(good.features,add.var)
+  # We will remove this variable from the set of remaining featurs
+  features = features[-which(features==add.var)]
+  # Now we repeat the procedure with remaining features until we:
+  # - either have only features that have a p-value above threshold
+  # - or we are with one left
+}
+# This takes a while as well! - Try it at home
+##############
+
+spec = gen.fm(dep='price',x=good.features)
+m7 = lm(spec,data=ocr)
+p7 = predict(m7,new=oct)
+# Find p-values
+pvals = pair.bt(model=m7,spec,B=B)
+# Let's take a look: coefficients + pvals
+cbind(coefficients(m7),pvals)
+
+###############################################
+# HOME ASSIGNMENT
+# Make a function that returns:
+# - Forward elimination selected specification
+# - Predictions from forward elimination
+###############################################
+
+#########
+# Predict
+NT = dim(oct)[1]
+# Store predictions
+predictions = matrix(NA,nrow=NT,ncol=10+1)
+colnames(predictions) = c('True',paste('p',1:5,sep=''),'BE','FE','LASSO','RIDGE','EN')
+predictions[,1] = oct$price
+# Check if there are negative values and if yes substitute (a function would be nice)
+p1[p1 < 0] = min(p1[p1>0])
+p2[p2 < 0] = min(p2[p2>0])
+p3[p3 < 0] = min(p3[p3>0])
+p4[p4 < 0] = min(p4[p4>0])
+p5[p5 < 0] = min(p5[p5>0])
+p6[p6 < 0] = min(p6[p6>0])
+p7[p7 < 0] = min(p7[p7>0])
+# Store predictions
+predictions[,2:8] = cbind(p1,p2,p3,p4,p5,p6,p7)
+
+head(predictions)
+
+#########
+# Evaluate
+# Store loss function - MSE
+mse = matrix(NA,nrow=NT,ncol=7) # 7 models
+colnames(mse) = colnames(predictions)[2:8]
+for (i in 1:7) mse[,i] = (predictions[,1] - predictions[,i+1])^2
+apply(mse,2,mean)
+
+#########
+# MCS
+library(MCS)
+MCSprocedure(mse)
+#########
+
+#########
+# LASSO
+library(glmnet)
+features = c('km','age','km10','power_lowest','power_low','power_mid','power_high',
+             'power_highest','ba','bb','ke','nr','po','tn','tt','petrol',
+             'petgas','man','eng1','eng2','eng3','eng4','eng6')
+# The function we are going to use requires features to be in a matrix object
+X = as.matrix(ocr[,features])
+# Outcome variable to be a matrix object as well
+Y = as.matrix(ocr[,'price'])
+# We do the same for the testing dataset
+XT = as.matrix(oct[,features])
+# Now we need to estimate \lambda using cross-validation
+# nfolds - is the k-cross-validation
+# type.measure - is the loss function, you could provide your own
+# alpha = 1 is LASSO, 0 - RIDGE, in-between EN
+cvm = cv.glmnet(x=X,y=Y,type.measure='mse',nfolds=10,alpha=1)
+
+# Figure
+plot(cvm)
+
+# You can check out coefficients for lambda-min
+coefficients(cvm,s='lambda.min')
+# or if lambda is 1se away from lambda-min
+coefficients(cvm,s='lambda.1se')
+
+# Now let's predict under lambda.min
+p8 = predict(cvm,newx = XT,s='lambda.min')
+summary(p8)
+p8[p8<0] = min(p8[p8>0])
+predictions[,9] = p8
+
+#########
+# RIDGE
+cvm = cv.glmnet(x=X,y=Y,type.measure='mse',nfolds=10,alpha=0)
+# Figure
+plot(cvm)
+# You can check out coefficients for lambda-min
+coefficients(cvm,s='lambda.min')
+# or if lambda is 1se away from lambda-min
+coefficients(cvm,s='lambda.1se')
+# Now let's predict under lambda.min
+p9 = predict(cvm,newx = XT,s='lambda.min')
+summary(p9)
+p9[p9<0] = min(p9[p9>0])
+predictions[,10] = p9
+
+#########
+# ELASTIC NET
+cvm = cv.glmnet(x=X,y=Y,type.measure='mse',nfolds=10,alpha=0.5)
+# Figure
+plot(cvm)
+# You can check out coefficients for lambda-min
+coefficients(cvm,s='lambda.min')
+# or if lambda is 1se away from lambda-min
+coefficients(cvm,s='lambda.1se')
+# Now let's predict under lambda.min
+p10 = predict(cvm,newx = XT,s='lambda.min')
+summary(p10)
+p10[p10<0] = min(p10[p10>0])
+predictions[,11] = p10
+
+###############################################
+# HOME ASSIGNMENT - if you feel up-to-it
+# Make a function that cross-validates different alpha values:
+# - Selects the 'preferred' Elastic Net model
+# - Returns the 'preferred' EN model's specifation
+# - Returns predictions from the 'preferred' model
+# - Both for lambda.min as well as for lambda.1se
+###############################################
+
+#########
+# Evaluate
+# Store loss function - MSE
+mse = matrix(NA,nrow=NT,ncol=10) # 10 models
+for (i in 1:10) mse[,i] = (predictions[,1] - predictions[,i+1])^2
+apply(mse,2,mean)
+
+#########
+# MCS
+library(MCS)
+MCSprocedure(mse)
+#########
+
+plot.ts(x=predictions[,1],y=predictions[,5],pch=19,cex=0.5,col='red',
+        xlab = 'true', ylab = 'model 4',ylim=c(0,35000),xlim=c(0,35000))
+lines(x=c(0,40000),y=c(0,40000),col='black',lwd=1)
+
+###############################################
+# HOME ASSIGNMENT - think about it
+# How would you exploit the fact that the model
+# systematically underestimates expensive cars?
+# Suggest a methodological approach to test your model.
+###############################################
+
+
+
+
+
+###################################################################################
+#### Seminar No. 5 ####
+# 1) Import oct.csv (xlsx) and ocr.csv (xlsx) and pred.csv
+# 2) Simple decision tree
+# 2.1) Estimate
+# 2.2) Visualize
+# 2.3) Predict
+# 2.4) Evaluate evaluation
+# 3) More variables - shallow tree
+# 4) More variables - deep tree
+# 5) More variables - deep tree -> pre-pruning
+# 6) More variables - deep tree -> penalization
+# 7) Bagging
+# 8) Boosting
+###################################################################################
+
+# 2) Decision tree
+library(tree)
+library(rpart)
+library(rpart.plot)
+# 2.1) Estimate
+t1 = rpart(price~km+man,data=ocr,method='anova',model=TRUE,
+           control=rpart.control(cp=0,maxdepth=3))
+# 2.2) Visualize
+rpart.plot(t1,type=0)
+rpart.plot(t1,type=1)
+# 2.3) Predict
+pred = cbind(pred, predict(t1,new=oct))
+colnames(pred)[dim(pred)[2]] = 'DC1'
+head(pred)
+# 2.4) Evaluate
+apply((pred[,-1] - pred[,1])^2,2,mean)
+# Or simply
+apply(pred[,-1],2,function(x,y) mean((x-y)^2), y=pred[,1])
+apply(pred[,-1],2,function(x,y) mean(abs(x-y)), y=pred[,1])
+# Not very accurate...
+
+######################
+# HOME ASSIGNMENT
+######################
+# Create a figure - similar to that on slide 9 of the Lecture 5 (Segmentation of the feature space)
+######################
+
+# 3) Let's try a tree with more variables - make it a shallow tree
+t2 = rpart(price ~ km + km10 + age + power_lowest + power_low + 
+             power_mid + power_high + power_highest + ba + bb + 
+             ke + nr + po + tn + tt + diesel + petgas + man + 
+             eng1 + eng2 + eng3 + eng4 + eng6, 
+           data=ocr,method='anova',model=TRUE,
+           control=rpart.control(cp=0,maxdepth=3))
+rpart.plot(t2,type=0)
+pred = cbind(pred, predict(t2,new=oct))
+colnames(pred)[dim(pred)[2]] = 'DC2'
+apply(pred[,-1],2,function(x,y) mean((x-y)^2), y=pred[,1])
+apply(pred[,-1],2,function(x,y) mean(abs(x-y)), y=pred[,1])
+# Better but still not great
+
+# 4) Let's try a tree with more variables - make it a deep tree
+t3 = rpart(price ~ km + km10 + age + power_lowest + power_low + 
+             power_mid + power_high + power_highest + ba + bb + 
+             ke + nr + po + tn + tt + diesel + petgas + man + 
+             eng1 + eng2 + eng3 + eng4 + eng6, 
+           data=ocr,method='anova',model=TRUE,
+           control=rpart.control(cp=0,maxdepth=9))
+# Visualization get's a little bit tricky - it's not necessary
+rpart.plot(t3,type=0)
+pred = cbind(pred, predict(t3,new=oct))
+colnames(pred)[dim(pred)[2]] = 'DC3'
+apply(pred[,-1],2,function(x,y) mean((x-y)^2), y=pred[,1])
+apply(pred[,-1],2,function(x,y) mean(abs(x-y)), y=pred[,1])
+# This is a break-through!
+
+# 5) Can we improve via pre-pruning?
+?rpart.control
+t4 = rpart(price ~ km + km10 + age + power_lowest + power_low + 
+             power_mid + power_high + power_highest + ba + bb + 
+             ke + nr + po + tn + tt + diesel + petgas + man + 
+             eng1 + eng2 + eng3 + eng4 + eng6, 
+           data=ocr,method='anova',model=TRUE,
+           control=rpart.control(cp=0,minsplit=25,minbucket=12,maxdepth=9))
+pred = cbind(pred, predict(t4,new=oct))
+colnames(pred)[dim(pred)[2]] = 'DC4'
+apply(pred[,-1],2,function(x,y) mean((x-y)^2), y=pred[,1])
+apply(pred[,-1],2,function(x,y) mean(abs(x-y)), y=pred[,1])
+
+
+##################
+# Home assignment
+##################
+# Design a procedure that will cross-validate maximum depth, minbucket size and minsplit.
+##################
+
+# 6) Can we improve via penalization?
+# Which is the optimal shrinkage parameter
+cv.tbl = printcp(t4)
+head(cv.tbl)
+opt.cp = cv.tbl[which(cv.tbl[,4] == min(cv.tbl[,4])),1]
+t5 = rpart(price ~ km + km10 + age + power_lowest + power_low + 
+             power_mid + power_high + power_highest + ba + bb + 
+             ke + nr + po + tn + tt + diesel + petgas + man + 
+             eng1 + eng2 + eng3 + eng4 + eng6, 
+           data=ocr,method='anova',model=TRUE,
+           control=rpart.control(cp=opt.cp,minsplit=25,minbucket=12,maxdepth=9))
+rpart.plot(t5,type=0)
+pred = cbind(pred, predict(t5,new=oct))
+colnames(pred)[dim(pred)[2]] = 'DC5'
+apply(pred[,-1],2,function(x,y) mean((x-y)^2), y=pred[,1])
+apply(pred[,-1],2,function(x,y) mean(abs(x-y)), y=pred[,1])
+round(100*apply(pred[,-1],2,function(x,y) mean(abs(x-y)/y), y=pred[,1]),2)
+
+# 7) Bagging
+# Recall - it involves bootstrapping!
+# Number of bootstrap samples
+B = 1000
+# Number of observations
+NT = dim(ocr)[1]
+# I need a place (matrix/dataset) to store prediction
+bag.fore = matrix(NA,nrow=dim(oct)[1],ncol=B)
+rownames(bag.fore) = rownames(oct)
+for (b in 1:B) {
+  if (b %in% seq(0,B,100)) print(b)
+  # Randomly select (with replacement) some row numbers
+  idx = sample(1:NT,NT,replace=T)
+  # Create the bootstrap sample
+  auta.train.b = ocr[idx ,]
+  # Estimate the model
+  bt = rpart(price ~ km + km10 + age + power_lowest + power_low + 
+               power_mid + power_high + power_highest + ba + bb + 
+               ke + nr + po + tn + tt + diesel + petgas + man + 
+               eng1 + eng2 + eng3 + eng4 + eng6, 
+             data=auta.train.b,method='anova',model=TRUE,
+             control=rpart.control(cp=0,xval=10,minsplit=c(25),minbucket=12,maxdepth=9))
+  # Prediction on a testing sample
+  bag.fore[,b] = predict(bt,new=oct)
+}
+# For every single observations in the testing dataset you have B predictions
+hist(bag.fore[1,],breaks=50) # nice
+# This way you could estimate 'confidence in your prediction'
+# For example, for the first car, the 95% confidence would be
+quantile(bag.fore[1,],p=c(0.025,0.975))
+# Now evaluate
+pred = cbind(pred, apply(bag.fore,1,mean,na.rm=T))
+colnames(pred)[dim(pred)[2]] = 'DC6'
+apply(pred[,-1],2,function(x,y) mean((x-y)^2), y=pred[,1])
+apply(pred[,-1],2,function(x,y) mean(abs(x-y)), y=pred[,1])
+# Impressive improvements!
+
+# 8) Random forest - can it get any better?
+# Let's try to decorrelate trees.
+library(ranger)
+# Number of trees
+B = 5000
+# Depth of the trees
+depth = c(3,6,9,12)
+# Number of depth parameters
+ND = length(depth)
+# Number of random 'picks' of features to consider in each split
+mtry = c(3,6,9)
+# Number of mtry parameters
+NR = length(mtry)
+# Number of cross-validations
+cv = 10
+# For each cross-validation sample I need to store predictions
+# MSE for CV
+rf.cv = array(NA,dim=c(NR,ND,cv))
+dimnames(rf.cv)[[1]] = paste('Try',mtry,'features')
+dimnames(rf.cv)[[2]] = paste('Depth',depth)
+dimnames(rf.cv)[[3]] = paste('CV sample',1:cv)
+# I need to find the average values for each cross-validation
+rf.cv.ave = array(NA,dim=c(NR,ND))
+dimnames(rf.cv.ave)[[1]] = paste('Try',mtry,'features')
+dimnames(rf.cv.ave)[[2]] = paste('Depth',depth)
+# Now we loop over different parameters & cross-validation samples
+# Number of mtry
+for (m in 1:NR) {
+  num.try = mtry[m]
+  # Depth
+  for (d in 1:ND) {
+    num.depth = depth[d]
+    # Now cross-validation      
+    for (r in 1:cv) {
+      # Select data
+      idx = c(((r-1)*(NT/cv)+1):(r*(NT/cv)))
+      auta.train.cvin = ocr[-idx,]
+      auta.train.cout = ocr[+idx,]
+      
+      # Estimate the model
+      rf.tree = ranger(price ~ km + km10 + age + power_lowest + power_low + 
+                         power_mid + power_high + power_highest + ba + bb + 
+                         ke + nr + po + tn + tt + diesel + petgas + man + 
+                         eng1 + eng2 + eng3 + eng4 + eng6,
+                       data=auta.train.cvin,
+                       num.trees=B,mtry=num.try,min.node.size=5,max.depth=num.depth) 
+      pred.rf.cv = predict(rf.tree,data=auta.train.cout)$predictions
+      rf.cv[m,d,r] = mean((pred.rf.cv - auta.train.cout$price)^2)
+    }
+    # Average
+    rf.cv.ave[m,d] = mean(rf.cv[m,d,])
+  }
+}
+# We estimated the random forest under different hyper-parameters
+# Now which has the lowest forecast error via cross-validation?
+rf.cv.ave
+which(rf.cv.ave == min(rf.cv.ave), arr.ind=TRUE)
+mtry.opt  = mtry[3]
+depth.opt = depth[4]
+rf = ranger(price ~ km + km10 + age + power_lowest + power_low + 
+              power_mid + power_high + power_highest + ba + bb + 
+              ke + nr + po + tn + tt + diesel + petgas + man + 
+              eng1 + eng2 + eng3 + eng4 + eng6,
+            data=ocr,num.trees=B,mtry=mtry.opt,min.node.size=5,max.depth=depth.opt)
+# Now evaluate
+pred = cbind(pred, predict(rf,data=oct)$predictions)
+colnames(pred)[dim(pred)[2]] = 'RF'
+apply(pred[,-1],2,function(x,y) mean((x-y)^2), y=pred[,1])
+apply(pred[,-1],2,function(x,y) mean(abs(x-y)), y=pred[,1])
+# We got something
+
+# 9) What about boosting?
+# We will use a package
+library(gbm)
+# library(xgboost)
+mod.gbm = gbm(price ~ km + km10 + age + power_lowest + power_low + 
+                power_mid + power_high + power_highest + ba + bb + 
+                ke + nr + po + tn + tt + diesel + petgas + man + 
+                eng1 + eng2 + eng3 + eng4 + eng6,data=ocr,distribution='gaussian',n.trees=B,
+              interaction.depth=depth.opt,shrinkage=0.001,bag.fraction=1)
+# Now evaluate
+pred = cbind(pred, predict(mod.gbm,new=oct))
+colnames(pred)[dim(pred)[2]] = 'GB'
+apply(pred[,-1],2,function(x,y) mean((x-y)^2), y=pred[,1])
+apply(pred[,-1],2,function(x,y) mean(abs(x-y)), y=pred[,1])
+# We got something
+
+mod.gbm.j = gbm(price ~ km + km10 + age + I(km*age) + power_lowest + power_low + 
+                  power_mid + power_high + I(km*power_high) + power_highest + I(km*power_highest) + ba + bb + 
+                  ke + nr + po + tn + tt + diesel + petgas + man + I(km*man) + 
+                  eng1 + eng2 + eng3 + eng4 + eng6,data=ocr,distribution='gaussian',n.trees=B,
+                interaction.depth=depth.opt,shrinkage=0.001,bag.fraction=1)
+# Now evaluate
+pred = cbind(pred, predict(mod.gbm.j,new=oct))
+colnames(pred)[dim(pred)[2]] = 'GB3'
+apply(pred[,-1],2,function(x,y) mean((x-y)^2), y=pred[,1])
+apply(pred[,-1],2,function(x,y) mean(abs(x-y)), y=pred[,1])
+
+
+
+##################
+# Home assignment
+##################
+# Design a procedure that will cross-validate shrinkage (learning parameters) and depth of gbm
+##################
+
