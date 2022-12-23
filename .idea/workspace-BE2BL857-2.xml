@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9892cbb0-01d6-4dce-bdd0-93689206b963" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/att/ML_DATASET_Hackathon_Supervised.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/att/ML_DATASET_Hackathon_Unsupervised.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/att/stepan_regression.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/downsampling_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/pca_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2-Aurélien-Géron-Hands-On-Machine-Learning-with-Scikit-Learn-Keras-and-Tensorflow_-Concepts-Tools-and-Techniques-to-Build-Intelligent-Systems-O’Reilly-Media-2019.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/.idea/util.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="Jupyter Notebook" />
+      </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2I34FhTFUl0zQxQcOp2PDpPZtYD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/A200083283/OneDrive - Deutsche Telekom AG/non_DT/uni/WS_22/AI/att&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\A200083283\OneDrive - Deutsche Telekom AG\non_DT\uni\WS_22\AI\att" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9892cbb0-01d6-4dce-bdd0-93689206b963" name="Changes" comment="" />
+      <created>1669396830762</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669396830762</updated>
+      <workItem from="1669396832149" duration="1435000" />
+      <workItem from="1669398355328" duration="12461000" />
+      <workItem from="1669556220419" duration="655000" />
+      <workItem from="1671101134015" duration="488000" />
+      <workItem from="1671183845277" duration="12504000" />
+      <workItem from="1671214797283" duration="20000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
